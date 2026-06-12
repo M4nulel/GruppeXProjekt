@@ -14,6 +14,7 @@ public class TicTacToe {
     }
 
     public void start() {
+        System.out.println("Welcome to Tic-Tac-Toe!");
         Scanner scanner = new Scanner(System.in);
         boolean gameRunning = true;
 
@@ -50,6 +51,16 @@ public class TicTacToe {
                 gameRunning = false;
             } else {
                 switchCurrentPlayer(); // Wechselt den Spieler nach dem Zug
+            }
+
+            if (!gameRunning) {
+                System.out.print("Play again? (y/n): ");
+                char response = scanner.next().toLowerCase().charAt(0);
+                if (response == 'y') {
+                    board.clear();
+                    currentPlayer = player1; // Wieder bei X anfangen
+                    gameRunning = true;
+                }
             }
 
         }
