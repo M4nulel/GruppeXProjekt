@@ -28,8 +28,23 @@ public class TicTacToe {
 
             while (!validInput) {
                 System.out.print("row (0-2): ");
+
+                if (!scanner.hasNextInt()) {
+                    System.out.println("Invalid input. Please enter a number.");
+                    scanner.next();
+                    continue;
+                }
+
                 row = scanner.nextInt();
+
                 System.out.print("column (0-2): ");
+
+                if (!scanner.hasNextInt()) {
+                    System.out.println("Invalid input. Please enter a number.");
+                    scanner.next();
+                    continue;
+                }
+
                 col = scanner.nextInt();
 
                 if (row >= 0 && row <= 2 && col >= 0 && col <= 2 && board.isCellEmpty(row, col)) {
@@ -77,7 +92,6 @@ public class TicTacToe {
 
     public boolean hasWinner() {
         char m = currentPlayer.getMarker();
-        char c00 = board.isCellEmpty(0, 0) ? ' ' : m;
 
 
         char[][] c = board.cells;
